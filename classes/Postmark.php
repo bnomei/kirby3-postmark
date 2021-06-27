@@ -27,7 +27,7 @@ final class Postmark
         $this->options = array_merge($defaults, $options);
 
         foreach ($this->options as $key => $callable) {
-            if (is_callable($callable) && in_array($key, ['apikey', 'apisecret'])) {
+            if (is_callable($callable) && in_array($key, ['apitoken'])) {
                 $this->options[$key] = trim((string) $callable()) . '';
             }
         }
