@@ -1,0 +1,3 @@
+fields:
+  text:
+    type: text
