@@ -9,7 +9,6 @@ use Postmark\PostmarkClient;
 
 final class Postmark
 {
-
     /** @var PostmarkClient */
     private $client;
 

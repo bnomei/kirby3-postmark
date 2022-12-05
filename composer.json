@@ -2,7 +2,7 @@
   "name": "bnomei/kirby3-postmark",
   "description": "Send transactional E-Mail with Postmark",
   "type": "kirby-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "authors": [
     {
@@ -37,12 +37,12 @@
     }
   },
   "require": {
-    "php": ">=7.3.0",
+    "php": ">=8.0",
     "getkirby/composer-installer": "^1.2",
     "wildbit/postmark-php": "^4.0"
   },
   "require-dev": {
-    "getkirby/cms": "^3.5",
+    "getkirby/cms": "^3.6",
     "php-coveralls/php-coveralls": "^2.4",
     "phpunit/phpunit": "^9.5"
   },
