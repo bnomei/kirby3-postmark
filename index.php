@@ -4,7 +4,8 @@
 
 Kirby::plugin('bnomei/postmark', [
     'options' => [
-        'apitoken' => null, // or callback
+        'access' => null, // or callback
+        'secret' => null, // or callback
         'trap' => null, // or callback
         'email' => [
             'transport' => [
@@ -13,8 +14,8 @@ Kirby::plugin('bnomei/postmark', [
                 'port' => 587,
                 'security' => 'tsl',
                 'auth' => true,
-//                'username' => null, // will default to apikey
-//                'password' => null, // will default to apisecret
+//                'username' => null, // will default to access
+//                'password' => null, // will default to secret
             ]
         ],
         'cache' => true,

@@ -20,13 +20,14 @@ final class Postmark
         $defaults = [
             'debug' => option('debug'),
             // 'log' => option('bnomei.postmark.log.fn'), // TODO: logging
-            'apitoken' => option('bnomei.postmark.apitoken'),
+            'access' => option('bnomei.postmark.access'),
+            'secret' => option('bnomei.postmark.secret'),
             'trap' => option('bnomei.postmark.trap'),
         ];
         $this->options = array_merge($defaults, $options);
 
         foreach ($this->options as $key => $callable) {
-            if (is_callable($callable) && in_array($key, ['apitoken'])) {
+            if (is_callable($callable) && in_array($key, ['access', 'secret'])) {
                 $this->options[$key] = trim((string) $callable()) . '';
             }
         }
@@ -71,8 +72,8 @@ final class Postmark
     {
         return array_merge(
             [
-                'username' => $this->option('apitoken'),
-                'password' => $this->option('apitoken'),
+                'username' => $this->option('access'),
+                'password' => $this->option('secret'),
             ],
             option('bnomei.postmark.email.transport')
         );

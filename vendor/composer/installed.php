@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'bnomei/kirby3-postmark',
-        'pretty_version' => '1.0.3',
-        'version' => '1.0.3.0',
+        'pretty_version' => '2.0.0',
+        'version' => '2.0.0.0',
         'reference' => NULL,
         'type' => 'kirby-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'bnomei/kirby3-postmark' => array(
-            'pretty_version' => '1.0.3',
-            'version' => '1.0.3.0',
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
             'reference' => NULL,
             'type' => 'kirby-plugin',
             'install_path' => __DIR__ . '/../../',
