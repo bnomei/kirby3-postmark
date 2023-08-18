@@ -33,7 +33,7 @@ final class Postmark
         }
 
         $this->client = new PostmarkClient(
-            $this->options['apitoken']
+            $this->options['access']
         );
 
         if ($this->option('debug')) {

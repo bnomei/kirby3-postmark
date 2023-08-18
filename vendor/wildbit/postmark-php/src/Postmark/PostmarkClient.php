@@ -19,7 +19,7 @@ class PostmarkClient extends PostmarkClientBase {
 	 * @param string $serverToken The token associated with "Server" you'd like to use to send/receive email from.
 	 * @param integer $timeout The timeout, in seconds to wait for an API call to complete before throwing an Exception.
 	 */
-	function __construct($serverToken, $timeout = 30) {
+	function __construct($serverToken, $timeout = 60) {
 		parent::__construct($serverToken, 'X-Postmark-Server-Token', $timeout);
 	}
 
@@ -41,6 +41,8 @@ class PostmarkClient extends PostmarkClientBase {
 	 * @param  string $trackLinks  Can be any of "None", "HtmlAndText", "HtmlOnly", "TextOnly" to enable link tracking.
 	 * @param  array $metadata  Add metadata to the message. The metadata is an associative array, and values will be evaluated as strings by Postmark.
 	 * @param  array $messageStream  The message stream used to send this message. If not provided, the default transactional stream "outbound" will be used.
+         * @throws Models\PostmarkException
+         *
 	 * @return DynamicResponseModel
 	 */
 	function sendEmail($from, $to, $subject, $htmlBody = NULL, $textBody = NULL,
@@ -1109,11 +1111,11 @@ class PostmarkClient extends PostmarkClientBase {
 	function createSuppressions($suppressionChanges = array(), $messageStream = NULL) {
 		$body = array();
 		$body["Suppressions"] = $suppressionChanges;
-		
+
 		if ($messageStream === NULL) {
 			$messageStream = "outbound";
 		}
-		
+
 		return new DynamicResponseModel($this->processRestRequest('POST', "/message-streams/$messageStream/suppressions", $body));
 	}
 
@@ -1129,11 +1131,11 @@ class PostmarkClient extends PostmarkClientBase {
 	function deleteSuppressions($suppressionChanges = array(), $messageStream = NULL) {
 		$body = array();
 		$body["Suppressions"] = $suppressionChanges;
-		
+
 		if ($messageStream === NULL) {
 			$messageStream = "outbound";
 		}
-		
+
 		return new DynamicResponseModel($this->processRestRequest('POST', "/message-streams/$messageStream/suppressions/delete", $body));
 	}
 
@@ -1156,11 +1158,11 @@ class PostmarkClient extends PostmarkClientBase {
 		$query["FromDate"] = $fromDate;
 		$query["ToDate"] = $toDate;
 		$query["EmailAddress"] = $emailAddress;
-		
+
 		if ($messageStream === NULL) {
 			$messageStream = "outbound";
 		}
-		
+
 		return new DynamicResponseModel($this->processRestRequest('GET', "/message-streams/$messageStream/suppressions/dump", $query));
 	}
 
